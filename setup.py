@@ -1,22 +1,21 @@
-import pygame
 from characters import *
 
 black_pieces_files = [
-    "graphics/black_pieces/king-b.svg",
-    "graphics/black_pieces/amazon-b.svg",
-    "graphics/black_pieces/rook-b.svg",
-    "graphics/black_pieces/augnw-b.svg",
-    "graphics/black_pieces/bishop-b.svg",
-    "graphics/black_pieces/pawn-b.svg"
+    "graphics/black_pieces/king-b.png",
+    "graphics/black_pieces/amazon-b.png",
+    "graphics/black_pieces/rook-b.png",
+    "graphics/black_pieces/augnw-b.png",
+    "graphics/black_pieces/bishop-b.png",
+    "graphics/black_pieces/pawn-b.png"
 ]
 
 white_pieces_files = [
-    "graphics/white_pieces/king-w.svg",
-    "graphics/white_pieces/amazon-w.svg",
-    "graphics/white_pieces/rook-w.svg",
-    "graphics/white_pieces/augnw-w.svg",
-    "graphics/white_pieces/bishop-w.svg",
-    "graphics/white_pieces/pawn-w.svg"
+    "graphics/white_pieces/king-w.png",
+    "graphics/white_pieces/amazon-w.png",
+    "graphics/white_pieces/rook-w.png",
+    "graphics/white_pieces/augnw-w.png",
+    "graphics/white_pieces/bishop-w.png",
+    "graphics/white_pieces/pawn-w.png"
 ]
 
 def add_pieces(pieces):

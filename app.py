@@ -1,5 +1,5 @@
 import pygame
-import sys
+from render import render
 import characters
 import setup
 
@@ -32,27 +32,8 @@ class App:
         self.clock = pygame.time.Clock()
         self.clock.tick(3)
 
-    def run(self):
-        while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    pass
-                    # App.moving = True
-
-            App.screen.fill(pygame.Color("white"))
-
-            if App.moving: fps = 60
-            else: fps = 3
-
-            self.draw_board()
-            self.pieces.update()
-            self.pieces.draw(App.screen)
-
-            pygame.display.flip()
-            self.clock.tick(fps)
+        # function to run the program
+        self.run = render(self, App)
 
     def draw_board(self):
         for row in range(8):

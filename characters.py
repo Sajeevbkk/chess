@@ -5,8 +5,9 @@ class Piece(pygame.sprite.Sprite):
     def __init__(self, color, file):
         pygame.sprite.Sprite.__init__(self)
         self.color = color
-        self.image = pygame.transform.scale2x(
-            pygame.image.load(file).convert_alpha()
+        self.image = pygame.transform.scale(
+            pygame.image.load(file).convert_alpha(),
+            (100, 100)
         )
         self.rect = self.image.get_rect()
         self.horizontal_multiplier = 100
@@ -20,7 +21,6 @@ class King(Piece):
 class Queen(Piece):
     def __init__(self, color, file):
         Piece.__init__(self, color, file)
-        self.horizontal_multiplier = 102
 
 class Bishop(Piece):
     def __init__(self, color, file):
