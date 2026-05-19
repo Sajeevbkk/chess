@@ -1,3 +1,7 @@
- .idea/
- Just sprites/
- __pycache__/
+.venv/
+.idea/
+Just sprites/
+__pycache__/
+*.pyc
+.vscode/
+.DS_Store
