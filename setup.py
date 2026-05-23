@@ -52,5 +52,6 @@ def create_pieces(pieces):
             coordinate[0] * piece.horizontal_multiplier,
             coordinate[1] * piece.vertical_multiplier
         )
+        piece.x, piece.y = coordinate[0], coordinate[1]
         sprites.append(piece)
     return sprites

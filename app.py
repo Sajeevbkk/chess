@@ -10,6 +10,7 @@ class App:
         self.width = 800
         self.height = 800
         App.screen = pygame.display.set_mode((self.width, self.height))
+        App.font = pygame.font.SysFont("comicsans", 16)
         pygame.display.set_caption("Chess")
         App.pieces_on_board = {
         characters.King(
@@ -35,7 +36,8 @@ class App:
         # function to run the program
         self.run = render(self, App)
 
-    def draw_board(self):
+    @staticmethod
+    def draw_board():
         for row in range(8):
             for col in range(8):
                 line_width = 2
@@ -49,4 +51,6 @@ class App:
                                  pygame.Color("gray"),
                                  (100*col, 100*row, 100, 100),
                                  line_width)
+                text = App.font.render(f"({col}, {row})", True, "blue")
+                App.screen.blit(text, (100*col, 100*row))
 
