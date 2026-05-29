@@ -90,6 +90,17 @@ class Knight(Piece):
     def __init__(self, color, file):
         Piece.__init__(self, color, file)
 
+    def check_valid_move(self, x, y, group):
+        allowed_position = []
+        for i  in range(1, 3):
+            j = 1 if i == 2 else 2
+            for dx in [i, -i]:
+                for dy in [j, -j]:
+                    allowed_position.append((x + dx, y + dy))
+        if (self.x, self.y) in allowed_position:
+            return self.check_collision(x, y, group)
+        return False
+
 class Rook(Piece):
     def __init__(self, color, file):
         Piece.__init__(self, color, file)
