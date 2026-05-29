@@ -49,6 +49,12 @@ class Bishop(Piece):
 
     def check_valid_move(self, x, y, group):
         if abs(self.x - x) == abs(self.y - y):
+            stepx = 1 if x - self.x > 0 else -1
+            stepy = 1 if y - self.y > 0 else -1
+            position_btwn = [(self.x + i * stepx, self.y + i * stepy) for i in range(abs(self.x - x))]
+            for member in group:
+                if member != self and (member.x, member.y) in position_btwn:
+                    return False
             return self.check_collision(x, y, group)
         return False
 
@@ -61,25 +67,28 @@ class Rook(Piece):
         Piece.__init__(self, color, file)
 
     def check_valid_move(self, x, y, group):
-        if self.y == y:
-            a, b = (self.x, x) if self.x > x else (x, self.x)
-            axis = 0 # 0 denotes x
-        elif self.x == x:
-            a, b = (self.y, y) if self.y > y else (y, self.y)
-            axis = 1 # 1 denotes y
+        if self.x == x:
+            old = self.y
+            new = y
+            check = 'y'
+        elif self.y == y:
+            old = self.x
+            new = x
+            check = 'x'
         else: return False
-        between = False
         for member in group:
-            if self != member:
-                if axis == 0 and member.y == self.y:
-                    c = a-member.x
-                elif axis == 1 and member.x == self.x:
-                    c = a-member.y
-                else: continue
-                if a-b > c:
-                    between = True
-        if not between: return self.check_collision(x, y, group)
-        return False
+            if self != member and getattr(member,
+                                          'x' if check == 'y' else 'y'
+                                          ) == getattr(
+                self, 'x' if check == 'y' else 'y'
+            ):
+                if old > new:
+                    if old > getattr(member, check) > new:
+                        return False
+                if old < new:
+                    if old < getattr(member, check) < new:
+                        return False
+        return self.check_collision(x, y, group)
 
 class Pawn(Piece):
     def __init__(self, color, file):
